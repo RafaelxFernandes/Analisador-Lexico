@@ -1,20 +1,18 @@
 %{
     #include <stdio.h>
-    
-    enum TOKEN { _ID = 256, _FOR, _IF, _INT, _FLOAT, _MAIG, _MEIG, _IG, _DIF, _STRING, _COMENTARIO };
 %}
-
-DIGITO  [0-9]
-LETRA   [A-Za-z_]
-WS      [ \t\n]
+     
+ DIGITO  [0-9]
+ LETRA   [A-Za-z_]
+ WS      [ \t\n]
 
 NUMERO  {DIGITO}+
 ID      {LETRA}({LETRA}|{DIGITO})*
 INT     {DIGITO}+
 FLOAT   {INT}("."{INT})?([E|e]("+"|"-")?{INT})?
 
-STRING  \"(\"\"|\\\"|[^\n])*\"
-COMENTARIO \/\*(((([^\*])*\*(\*)*([^\*\/]))*)|(([^\*])*\*(\*)*))\/
+STRING  \"(\"\"|\\\"|[^\n\"])*\"
+COMENTARIO \/\*(((([^\*])*\*(\*)*([^\*\/]))*)(([^\*])*\*(\*)*))\/
 
 RESTO [^\n]
 
